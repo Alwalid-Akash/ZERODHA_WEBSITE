@@ -1,7 +1,7 @@
 import React from "react";
 
 
-function Hero() {
+function ProductHero() {
 
   return (
 
@@ -9,12 +9,12 @@ function Hero() {
 
 
       <h1>
-        Pricing
+        Products
       </h1>
 
 
-      <p className="text-muted fs-5">
-        Simple and transparent pricing for everyone.
+      <p className="text-muted">
+        Everything you need to invest and trade.
       </p>
 
 
@@ -25,4 +25,4 @@ function Hero() {
 }
 
 
-export default Hero;
+export default ProductHero;

@@ -69,8 +69,8 @@ function Stats() {
             />
 
           </div>
-        </div>
 
+        </div>
 
       </div>
 
