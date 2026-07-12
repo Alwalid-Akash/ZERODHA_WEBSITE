@@ -1,22 +1,56 @@
 import React from "react";
 
-import Hero from "./Hero";
-import CreateTicket from "./CreateTicket";
 
-
-function SupportPage() {
+function CreateTicket() {
 
 
   return (
 
-    <>
-
-      <Hero />
-
-      <CreateTicket />
+    <div className="container my-5">
 
 
-    </>
+      <h3>
+        Create a ticket
+      </h3>
+
+
+
+      <form>
+
+
+        <input
+          className="form-control mb-3"
+          placeholder="Email"
+        />
+
+
+
+        <input
+          className="form-control mb-3"
+          placeholder="Subject"
+        />
+
+
+
+        <textarea
+          className="form-control mb-3"
+          rows="5"
+          placeholder="Describe your problem"
+        />
+
+
+
+        <button className="btn btn-primary">
+          Submit Ticket
+        </button>
+
+
+      </form>
+
+
+
+    </div>
+
 
   )
 
@@ -24,4 +58,4 @@ function SupportPage() {
 }
 
 
-export default SupportPage;
+export default CreateTicket;

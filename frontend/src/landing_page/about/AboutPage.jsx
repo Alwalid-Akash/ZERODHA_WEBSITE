@@ -31,7 +31,7 @@ function AboutPage() {
             </div>
 
             <div className="card">
-              <h3>$1000+ Cr</h3>
+              <h3>₹1000+ Cr</h3>
               <p>Daily Trading Volume</p>
             </div>
 

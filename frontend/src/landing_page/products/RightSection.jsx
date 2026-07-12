@@ -1,54 +1,22 @@
 import React from "react";
 
-
-function RightSection({ title, description, image }) {
-
-
+function RightSection({ imageURL, productName, productDesription, learnMore }) {
   return (
-
-    <div className="row align-items-center my-5">
-
-
-      <div className="col-md-6 order-md-2">
-
-
-        <img
-          src={image}
-          className="img-fluid"
-        />
-
-
+    <div className="container mt-5">
+      <div className="row">
+        <div className="col-6 p-5 mt-5">
+          <h1>{productName}</h1>
+          <p>{productDesription}</p>
+          <div>
+            <a href={learnMore}>Learn More</a>
+          </div>
+        </div>
+        <div className="col-6">
+          <img src={imageURL} />
+        </div>
       </div>
-
-
-
-      <div className="col-md-6">
-
-
-        <h2>
-          {title}
-        </h2>
-
-
-        <p className="text-muted">
-          {description}
-        </p>
-
-
-        <a href="#" className="text-decoration-none">
-          Learn more →
-        </a>
-
-
-      </div>
-
-
     </div>
-
-  )
-
-
+  );
 }
-
 
 export default RightSection;

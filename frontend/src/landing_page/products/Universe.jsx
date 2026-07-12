@@ -1,71 +1,48 @@
-
 import React from "react";
 
-
 function Universe() {
-
-
   return (
+    <div className="container mt-5">
+      <div className="row text-center">
+        <h1>The Zerodha Universe</h1>
+        <p>
+          Extend your trading and investment experience even further with our
+          partner platforms
+        </p>
 
-    <div className="container text-center my-5">
-
-
-      <h2>
-        The Zerodha Universe
-      </h2>
-
-
-      <p className="text-muted">
-        Explore all our apps and platforms.
-      </p>
-
-
-
-      <div className="row mt-5">
-
-
-        <div className="col-md-4">
-
-          <h4>Kite</h4>
-
-          <p>
-            Trading platform
-          </p>
-
+        <div className="col-4 p-3 mt-5">
+          <img src="media/images/smallcaseLogo.png" />
+          <p className="text-small text-muted">Thematic investment platform</p>
         </div>
-
-
-        <div className="col-md-4">
-
-          <h4>Coin</h4>
-
-          <p>
-            Mutual funds
-          </p>
-
+        <div className="col-4 p-3 mt-5">
+          <img src="media/images/smallcaseLogo.png" />
+          <p className="text-small text-muted">Thematic investment platform</p>
         </div>
-
-
-        <div className="col-md-4">
-
-          <h4>Console</h4>
-
-          <p>
-            Reports and analytics
-          </p>
-
+        <div className="col-4 p-3 mt-5">
+          <img src="media/images/smallcaseLogo.png" />
+          <p className="text-small text-muted">Thematic investment platform</p>
         </div>
-
-
+        <div className="col-4 p-3 mt-5">
+          <img src="media/images/smallcaseLogo.png" />
+          <p className="text-small text-muted">Thematic investment platform</p>
+        </div>
+        <div className="col-4 p-3 mt-5">
+          <img src="media/images/smallcaseLogo.png" />
+          <p className="text-small text-muted">Thematic investment platform</p>
+        </div>
+        <div className="col-4 p-3 mt-5">
+          <img src="media/images/smallcaseLogo.png" />
+          <p className="text-small text-muted">Thematic investment platform</p>
+        </div>
+        <button
+          className="p-2 btn btn-primary fs-5 mb-5"
+          style={{ width: "20%", margin: "0 auto" }}
+        >
+          Signup Now
+        </button>
       </div>
-
-
     </div>
-
-
-  )
-
+  );
 }
-
 
 export default Universe;
