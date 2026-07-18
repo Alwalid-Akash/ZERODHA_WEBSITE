@@ -1,0 +1,29 @@
+body {
+  background-color: #f4f4f6;
+}
+
+.cursor-move {
+  cursor: move;
+}
+
+.watchlist-item {
+  padding: 0.6rem 0.75rem;
+}
+
+.watchlist-actions {
+  display: none;
+  background: linear-gradient(to right, transparent, white 15%);
+}
+
+.watchlist-item:hover .watchlist-actions {
+  display: flex;
+}
+
+#buy-window,
+#sell-window {
+  border-radius: 0.5rem;
+}
+
+.nav-link {
+  transition: color 0.15s ease-in-out;
+}
