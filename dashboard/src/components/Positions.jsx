@@ -1,11 +1,26 @@
-import React from "react";
-
-import { positions } from "../data/data";
-
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+//import { positions } from "../data/data";
 const Positions = () => {
+  const [allPositions, setAllPositions] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:3002/allPositions")
+      .then((res) => {
+        console.log(res.data);
+        setAllPositions(res.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, []);
+
   return (
     <>
-      <h5 className="fw-normal mb-3">Positions ({positions.length})</h5>
+      <h5 className="fw-normal mb-3">
+        Positions ({allPositions.length})
+      </h5>
 
       <div className="table-responsive">
         <table className="table table-hover align-middle">
@@ -20,24 +35,43 @@ const Positions = () => {
               <th className="text-end">Chg.</th>
             </tr>
           </thead>
+
           <tbody>
-            {positions.map((stock, index) => {
+            {allPositions.map((stock) => {
               const curValue = stock.price * stock.qty;
-              const isProfit = curValue - stock.avg * stock.qty >= 0.0;
-              const profClass = isProfit ? "text-success" : "text-danger";
-              const dayClass = stock.isLoss ? "text-danger" : "text-success";
+              const profit = curValue - stock.avg * stock.qty;
+
+              const profClass =
+                profit >= 0 ? "text-success" : "text-danger";
+
+              const dayClass =
+                stock.isLoss ? "text-danger" : "text-success";
 
               return (
-                <tr key={index}>
+                <tr key={stock._id}>
                   <td>{stock.product}</td>
+
                   <td>{stock.name}</td>
-                  <td className="text-end">{stock.qty}</td>
-                  <td className="text-end">{stock.avg.toFixed(2)}</td>
-                  <td className="text-end">{stock.price.toFixed(2)}</td>
-                  <td className={"text-end " + profClass}>
-                    {(curValue - stock.avg * stock.qty).toFixed(2)}
+
+                  <td className="text-end">
+                    {stock.qty}
                   </td>
-                  <td className={"text-end " + dayClass}>{stock.day}</td>
+
+                  <td className="text-end">
+                    ₹{stock.avg.toFixed(2)}
+                  </td>
+
+                  <td className="text-end">
+                    ₹{stock.price.toFixed(2)}
+                  </td>
+
+                  <td className={`text-end ${profClass}`}>
+                    ₹{profit.toFixed(2)}
+                  </td>
+
+                  <td className={`text-end ${dayClass}`}>
+                    {stock.day}
+                  </td>
                 </tr>
               );
             })}

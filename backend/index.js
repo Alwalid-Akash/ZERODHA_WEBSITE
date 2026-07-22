@@ -1,14 +1,14 @@
 require("dotenv").config();
-
+const bodyparser = require("body-parser")
 const express = require("express");
 const cors = require("cors");
 const connectDB = require("./config/db");
 const Holdings = require("./model/HoldingModel");
 const Positions = require("./model/PositionsModel")
-
+const Orders = require("./model/OrdersModel")
 const app = express();
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3002;
 
 app.use(cors());
 app.use(express.json());
@@ -211,6 +211,62 @@ app.get("/allPositions", async (req, res) => {
     });
   }
 });
+
+
+app.post("/newOrder", async (req, res) => {
+  console.log("Request Body:", req.body);
+  console.log(req.body);
+  try {
+    const newOrder = new Orders({
+      name: req.body.name,
+      qty: req.body.qty,
+      price: req.body.price,
+      mode: req.body.mode,
+    });
+
+    await newOrder.save();
+
+    res.status(201).json({
+      message: "Order saved successfully",
+      order: newOrder,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: "Failed to save order",
+      error: error.message,
+    });
+  }
+});
+
+
+app.post("/sellOrder", async (req, res) => {
+  console.log("Sell Request:", req.body);
+
+  try {
+    const sellOrder = new Orders({
+      name: req.body.name,
+      qty: req.body.qty,
+      price: req.body.price,
+      mode: "SELL",
+    });
+
+    await sellOrder.save();
+
+    res.status(201).json({
+      message: "Sell order saved successfully",
+      order: sellOrder,
+    });
+
+  } catch (error) {
+    console.error(error);
+
+    res.status(500).json({
+      message: "Failed to save sell order",
+      error: error.message,
+    });
+  }
+});
+
 
 app.listen(PORT, () => {
   console.log(`🚀 Server is running on port ${PORT}`);

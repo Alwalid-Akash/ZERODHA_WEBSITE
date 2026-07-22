@@ -16,7 +16,7 @@ function Signup() {
 
 
           <img
-            src="/media/images/account_open.svg"
+            src="/media/images/signup.png"
             className="img-fluid"
           />
 

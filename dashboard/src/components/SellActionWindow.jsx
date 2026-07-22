@@ -7,20 +7,27 @@ import { API_BASE_URL } from "../api";
 
 const SellActionWindow = ({ uid }) => {
   const [stockQuantity, setStockQuantity] = useState(1);
-  const [stockPrice, setStockPrice] = useState(0.0);
+  const [stockPrice, setStockPrice] = useState("");
   const generalContext = useContext(GeneralContext);
 
-  const handleSellClick = () => {
-    axios
-      .post(`${API_BASE_URL}/newOrder`, {
+  const handleSellClick = async () => {
+    try {
+      const response = await axios.post(`${API_BASE_URL}/newOrder`, {
         name: uid,
         qty: stockQuantity,
-        price: stockPrice,
+        price: Number(stockPrice),
         mode: "SELL",
-      })
-      .catch((err) => console.error("Failed to place sell order:", err));
+      });
 
-    generalContext.closeSellWindow();
+      console.log("Sell order saved:", response.data);
+
+      generalContext.closeSellWindow();
+    } catch (err) {
+      console.error(
+        "Failed to place sell order:",
+        err.response?.data || err.message
+      );
+    }
   };
 
   const handleCancelClick = () => {

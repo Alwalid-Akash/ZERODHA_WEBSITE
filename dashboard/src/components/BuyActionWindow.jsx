@@ -7,20 +7,23 @@ import { API_BASE_URL } from "../api";
 
 const BuyActionWindow = ({ uid }) => {
   const [stockQuantity, setStockQuantity] = useState(1);
-  const [stockPrice, setStockPrice] = useState(0.0);
+  const [stockPrice, setStockPrice] = useState("");
   const generalContext = useContext(GeneralContext);
 
-  const handleBuyClick = () => {
-    axios
-      .post(`${API_BASE_URL}/newOrder`, {
+  const handleBuyClick = async () => {
+    try {
+      const response = await axios.post(`${API_BASE_URL}/newOrder`, {
         name: uid,
         qty: stockQuantity,
-        price: stockPrice,
+        price: Number(stockPrice),
         mode: "BUY",
-      })
-      .catch((err) => console.error("Failed to place buy order:", err));
+      });
 
-    generalContext.closeBuyWindow();
+      console.log("Success:", response.data);
+      generalContext.closeBuyWindow();
+    } catch (err) {
+      console.error("Error:", err.response?.data || err.message);
+    }
   };
 
   const handleCancelClick = () => {
