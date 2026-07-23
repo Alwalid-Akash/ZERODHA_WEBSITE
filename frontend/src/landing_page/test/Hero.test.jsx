@@ -7,15 +7,19 @@ import Hero from "../home/Hero";
 
 describe("Hero Component", () => {
 
+
   test("renders hero heading", () => {
 
     render(<Hero />);
 
-    const heading = screen.getByText("Invest in Everything");
+    const heading = screen.getByText(
+      "Invest in Everything"
+    );
 
     expect(heading).toBeInTheDocument();
 
   });
+
 
 
   test("renders hero image", () => {
@@ -29,14 +33,18 @@ describe("Hero Component", () => {
   });
 
 
+
   test("renders signup button", () => {
 
     render(<Hero />);
 
-    const button = screen.getByText("Signup");
+    const button = screen.getByRole("button", {
+      name: "Signup"
+    });
 
     expect(button).toBeInTheDocument();
 
   });
+
 
 });
